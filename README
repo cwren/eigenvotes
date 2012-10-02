@@ -1,0 +1,30 @@
+The vote space is a high-dimensional space representing all the
+possible votes on a set of actions.  A candidate occupies a point in
+this space, defined by the vector constructed of thier votes.  A
+matrix of votes is created by stacking the candidates, forming a matrix
+of votes arrayed by candidate crossed by action.  Since we cannot
+visual a hundred-dimensional space, it is necessary to find a
+projection of these votes into a subspace that we can visualize.  The
+the singular value decomposition is computed for the matrix to find
+the linear 2D subspace that capture the greatest variation in the
+data.  Each candidate is projected through this transform into the 2D
+space defined by the two most significant singular values.  The
+candidates are then charted in this eigenvote space.
+
+All votes are considered, not just the final vote on a bill, or the
+votes on "important" bills.  All votes have an impact on the
+conversation occurring in Washington D.C., so when determining how a
+candidate votes, all votes should be considered.
+
+First, to download the voting records, you must edit scan.py to add
+your votesmart key, then
+
+./scan.py
+
+To pivot on a representative, find their votesmart candidate ID (for
+example, Senator Scott Brown is 18919), then project all
+representatives with significant overlapping votes into a common 2D space:
+
+./eigenvotes.py 18919
+
+Load the output into a spreadsheet, and chart to taste.
